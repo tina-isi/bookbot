@@ -1,18 +1,16 @@
-from stats import count_char, count_words
+import sys
 
-
-def get_book_text(path):
-    with open(path) as file:
-        file_content = file.read()
-    return file_content
+from report import print_report
 
 
 def main():
-    file_content = get_book_text("books/frankenstein.txt")
-    num_words = count_words(file_content)
-    num_char = count_char(file_content)
-    # print(f"{num_words} words found in the document")
-    print(num_char)
+    # path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
+    print_report(path)
 
 
 main()
